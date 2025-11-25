@@ -34,14 +34,14 @@ def existing_movie_id(movie_id: str) -> str:
 
 # 1. Listar detalhes de uma lista – GET /list/{list_id}
 
-@when(parsers.cfparse('eu enviar uma requisição `GET` para "{path}/{list_id}"'), target_fixture="response")
+@when(parsers.cfparse('eu envio uma requisição `GET` para "{path}/{list_id}"'), target_fixture="response")
 def send_get_list_details_request(base_url: str, path: str, list_id: str):
     url = base_url + path + "/" + list_id
     resp = requests.get(url)
     return resp
 
 
-@when(parsers.cfparse('eu enviar uma requisição `GET` para "{path}"'), target_fixture="response")
+@when(parsers.cfparse('eu envio uma requisição `GET` para "{path}"'), target_fixture="response")
 def send_get_simple_request(base_url: str, path: str):
     url = base_url + path
     resp = requests.get(url)
@@ -62,7 +62,7 @@ def send_get_item_status_request(base_url: str, path: str, list_id: str, datatab
 
 # 3. Criar uma nova lista – POST /list
 
-@when(parsers.cfparse('eu enviar uma requisição `POST` para "{path}" com o seguinte corpo:'), target_fixture="response")
+@when(parsers.cfparse('eu envio uma requisição `POST` para "{path}" com o seguinte corpo:'), target_fixture="response")
 def send_post_create_list_request(base_url: str, path: str):
     # Corpo fixo baseado no arquivo de feature
     body = {
@@ -77,7 +77,7 @@ def send_post_create_list_request(base_url: str, path: str):
 
 # 4. Adicionar um filme a lista – POST /list/{list_id}/add_item
 
-@when(parsers.cfparse('eu enviar uma requisição `POST` para "{path}/{list_id}/add_item" com o seguinte corpo:'), target_fixture="response")
+@when(parsers.cfparse('eu envio uma requisição `POST` para "{path}/{list_id}/add_item" com o seguinte corpo:'), target_fixture="response")
 def send_post_add_item_request(base_url: str, path: str, list_id: str):
     body = {"media_id": 550}
     url = base_url + path + "/" + list_id + "/add_item"
@@ -87,7 +87,7 @@ def send_post_add_item_request(base_url: str, path: str, list_id: str):
 
 # 5. Remover um filme da lista – POST /list/{list_id}/remove_item
 
-@when(parsers.cfparse('eu enviar uma requisição `POST` para "{path}/{list_id}/remove_item" com o seguinte corpo:'), target_fixture="response")
+@when(parsers.cfparse('eu envio uma requisição `POST` para "{path}/{list_id}/remove_item" com o seguinte corpo:'), target_fixture="response")
 def send_post_remove_item_request(base_url: str, path: str, list_id: str):
     body = {"media_id": 550}
     url = base_url + path + "/" + list_id + "/remove_item"
@@ -97,7 +97,7 @@ def send_post_remove_item_request(base_url: str, path: str, list_id: str):
 
 # 6. Limpar todos os itens da lista – POST /list/{list_id}/clear
 
-@when(parsers.cfparse('eu enviar uma requisição `POST` para "{path}/{list_id}/clear" com o seguinte corpo:'), target_fixture="response")
+@when(parsers.cfparse('eu envio uma requisição `POST` para "{path}/{list_id}/clear" com o seguinte corpo:'), target_fixture="response")
 def send_post_clear_list_request(base_url: str, path: str, list_id: str):
     body = {"confirm": True}
     url = base_url + path + "/" + list_id + "/clear"
@@ -107,7 +107,7 @@ def send_post_clear_list_request(base_url: str, path: str, list_id: str):
 
 # 7. Deletar uma lista – DELETE /list/{list_id}
 
-@when(parsers.cfparse('eu enviar uma requisição `DELETE` para "{path}/{list_id}"'), target_fixture="response")
+@when(parsers.cfparse('eu envio uma requisição `DELETE` para "{path}/{list_id}"'), target_fixture="response")
 def send_delete_list_request(base_url: str, path: str, list_id: str):
     url = base_url + path + "/" + list_id
     resp = requests.delete(url)
