@@ -43,12 +43,10 @@ def existing_movie_in_list(movie_id: str) -> str:
 # Cenários
 # ========
 def _resolve_list_id(list_id: str) -> str:
-    """Allow overriding list_id via env var TMDB_LIST_ID without changing feature."""
     return os.getenv("TMDB_LIST_ID", list_id)
 
 
 def _build_auth():
-    """Build headers/params using either v4 bearer or v3 api_key."""
     headers = {}
     params = {}
     bearer = os.getenv("TMDB_BEARER_TOKEN")
@@ -114,9 +112,6 @@ def send_get_with_query_params(base_url: str, path: str, datatable):
     query_params.update(base_params)
     resp = requests.get(url, headers=headers, params=query_params)
     return resp
-
-
-"""Não há mais cenários de escrita (POST/DELETE); apenas GETs são usados."""
 
 
 #===================
